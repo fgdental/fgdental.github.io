@@ -5,70 +5,8 @@
     <title>Tandläkare Farah Ghelichkhan</title>
     <meta name="keywords" content="tandvård, tandläkare, implantat, hemtandvård">
     <meta name="description" content="Tandläkare på Roslagsgatan 14. Hemtandvård, akuttandvård, implantat, barntandvård, estetisk tandvård, protetik.">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    
-    <!-- Custom CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Base styling for responsiveness -->
-    <style>
-        .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .columns-two-50-50 {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .columns-two-left,
-        .columns-two-right {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        @media (max-width: 768px) {
-            .columns-two-left,
-            .columns-two-right {
-                flex: 100%;
-            }
-        }
-        
-        .headerborder {
-            display: flex;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        
-        .headerborder li {
-            flex: 1;
-            height: 3px;
-        }
-        
-        .color1 { background-color: #007bff; }
-        .color2 { background-color: #28a745; }
-        .color3 { background-color: #dc3545; }
-        
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 20px;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
     <div class="canvas">
@@ -81,14 +19,14 @@
 
             <div class="wrapper">
                 <div class="companyheader">
-                    <a href="/">Leg. Tandläkare Farah Ghelichkhan</a>
+                    <a href="index.html">Leg. Tandläkare Farah Ghelichkhan</a>
                 </div>
                 <nav>
                     <ul class="align-right">
-                        <li class="home selected"><a href="/"><span>Hem</span></a></li>
-                        <li><a href="/behandlingar"><span>Behandlingar</span></a></li>
-                        <li><a href="/om-oss"><span>Om</span></a></li>
-                        <li><a href="/hitta-till-oss"><span>Hitta till oss</span></a></li>
+                        <li class="selected"><a href="index.html"><span>Hem</span></a></li>
+                        <li><a href="behandlingar.html"><span>Behandlingar</span></a></li>
+                        <li><a href="om.html"><span>Om</span></a></li>
+                        <li><a href="hitta-till-oss.html"><span>Hitta till oss</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -108,38 +46,27 @@
                         </a>
                         
                         <div class="contact-info">
-                            <p>För akuta tider eller frågor, ring eller e-maila:</p>
+                            <h3>Kontakta oss</h3>
+                            <p>För akuta tider eller frågor, vänligen ring oss på:</p>
                             <p>Telefon: <strong>08-20 30 35</strong></p>
-                            <p>E-mail: <strong>farah.ghe@gmail.com</strong></p>
-                            <p>Alternativt använd formuläret nedan. Glöm inte att uppge dina kontaktuppgifter. Svar inom 24 timmar.</p>
+                            <p>Du kan också kontakta oss via e-post:</p>
+                            <p>E-post: <strong>farah.ghe@gmail.com</strong></p>
+                            <p>Vi svarar normalt inom 24 timmar på vardagar.</p>
                         </div>
-                        
-                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                            <div class="form-group">
-                                <label for="email">Din epostadress:</label>
-                                <input type="email" id="email" name="email" placeholder="namn@gmail.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Meddelande:</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            <button type="submit" class="btn">Skicka</button>
-                        </form>
                     </div>
                     
                     <div class="columns-two-right">
-                        <!-- Replace image paths with your GitHub repository paths -->
-                        <img src="images/tandlakare.jpg" alt="Tandläkare" width="75%">
-                        <img src="images/laddaned.png" alt="Ladda Ned" width="75%">
-                        <img src="images/pt_medl_symbol.gif" alt="Medlemskap Symbol" width="50%">
-                        <img src="images/medlem3.png" alt="Medlem" width="183">
-                        <img src="images/payment.jpg" alt="Betalning" width="50%">
+                        <img src="images/farah-portrait.jpg" alt="Tandläkare" width="75%">
+                        <img src="images/anslutenforsakringskassan.jpg" alt="Ansluten till Försäkringskassan" width="75%">
+                        <img src="images/medlem-privattandlakarna.jpg" alt="Medlem av Privattandläkarna" width="50%">
+                        <img src="images/tandlakarforbund-logo.jpg" alt="Sveriges Tandläkarförbund" width="183">
+                        <img src="images/payzmart-logo.jpg" alt="Payzmart Betalning" width="50%">
                     </div>
                 </div>
             </section>
         </div>
 
-        <footer>
+        <footer class="bk-footer">
             <ul class="headerborder">
                 <li class="color1"></li>
                 <li class="color2"></li>
