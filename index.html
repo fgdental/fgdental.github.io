@@ -125,38 +125,52 @@
     </div>
 
     <script>
-        const form = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
 
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault();
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Hide the form
-                    form.classList.add('form-hidden');
-                    // Show success message
-                    successMessage.style.display = 'block';
-                    // Reset the form
-                    form.reset();
-                    // Optionally scroll to the success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    throw new Error('Form submission failed');
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        // Disable the submit button immediately to prevent double submissions
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
                 }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Det uppstod ett fel. Försök igen senare eller kontakta oss via telefon.');
+            });
+
+            if (response.ok) {
+                // Hide the form
+                form.style.display = 'none';
+                
+                // Show success message with styled text
+                successMessage.style.display = 'block';
+                successMessage.innerHTML = `
+                    <div style="text-align: center;">
+                        <p style="color: #007bff; font-weight: bold; font-size: 1.1em;">Tack för ditt meddelande!</p>
+                        <p style="color: #007bff; font-weight: bold; font-size: 1.1em;">Vi återkommer inom kort</p>
+                    </div>`;
+                
+                // Scroll to the success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Reset the form (even though it's hidden)
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
             }
-        });
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Det uppstod ett fel. Försök igen senare eller kontakta oss via telefon.');
+            // Re-enable the submit button if there was an error
+            submitButton.disabled = false;
+        }
+    });
     </script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
