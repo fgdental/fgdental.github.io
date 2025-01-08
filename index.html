@@ -22,6 +22,11 @@
                     <a href="index.html">Leg. Tandläkare Farah Ghelichkhan</a>
                 </div>
                 <nav>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                     <ul class="align-right">
                         <li class="selected"><a href="index.html"><span>Hem</span></a></li>
                         <li><a href="behandlingar.html"><span>Behandlingar</span></a></li>
@@ -41,9 +46,11 @@
                     <div class="columns-two-left">
                         <p>Hos oss erbjuds du kvalitetstandvård med personligt bemötande.</p>
                         
-                        <a href="https://calendar.app.google/oF63zvoX1ZdmTRGT7" class="btn bold" target="_blank">
-                            <span class="btnText">Boka tid</span>
-                        </a>
+                        <div class="text-center">
+                            <a href="https://calendar.app.google/oF63zvoX1ZdmTRGT7" class="btn bold" target="_blank">
+                                <span class="btnText">Boka tandläkartid</span>
+                            </a>
+                        </div>
                         
                         <div class="contact-info">
                             <h3>Kontakta oss</h3>
@@ -51,16 +58,31 @@
                             <p>Telefon: <strong>08-20 30 35</strong></p>
                             <p>E-mail: <strong>farah.ghe@gmail.com</strong></p>
                             <p>Alternativt använd formuläret nedan. Glöm inte att uppge dina kontaktuppgifter. Svar inom 24 timmar.</p>
-                            
-                            <!-- Embedded Google Form -->
-                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdO62CtWpLu-lukloo3KtHS30nLLmzsQiu-Ce5LhwlQfxdrqg/viewform?embedded=true" 
-                                width="100%" 
-                                height="700" 
-                                frameborder="0" 
-                                marginheight="0" 
-                                marginwidth="0">
-                                Laddar formulär...
-                            </iframe>
+                        
+                            <form id="contactForm" action="https://formspree.io/f/mnnnoelz" method="POST">
+                                <div>
+                                    <label for="name">Ditt namn:</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="email">Din e-mail adress:</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="message">Meddelande:</label>
+                                    <textarea id="message" name="message" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn bold">
+                                    <span class="btnText">Skicka meddelande</span>
+                                </button>
+                            </form>
+
+                            <div id="successMessage" class="message-success" style="display: none;">
+                                Tack för ditt meddelande! Vi återkommer inom kort.
+                            </div>
                         </div>
                     </div>
                     
@@ -101,5 +123,66 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Hide the form
+                    form.classList.add('form-hidden');
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    // Reset the form
+                    form.reset();
+                    // Optionally scroll to the success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Det uppstod ett fel. Försök igen senare eller kontakta oss via telefon.');
+            }
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav ul');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    });
+    </script>
 </body>
 </html>
